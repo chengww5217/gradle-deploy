@@ -1,8 +1,8 @@
 # gradle-deploy
 
 [![Download](https://api.bintray.com/packages/chengww5217/maven/gradle-deploy/images/download.svg)](https://bintray.com/chengww5217/maven/gradle-deploy)
-![GitHub issues](https://img.shields.io/github/issues/chengww5217/gradle-deploy?color=blue)
-[![License](http://img.shields.io/badge/license-apache%20v2-blue.svg)](https://github.com/chengww5217/gradle-deploy/blob/master/LICENSE)
+[![GitHub issues](https://img.shields.io/github/issues/chengww5217/gradle-deploy)](https://github.com/chengww5217/gradle-deploy/issues)
+[![GitHub](https://img.shields.io/github/license/chengww5217/gradle-deploy?color=yellow)](https://github.com/chengww5217/gradle-deploy/blob/master/LICENSE)
 
 > gradle-deploy 是一个对以 gradle 构建的项目产物发布到对象存储或自定义服务器的一个 gradle 插件。
 
