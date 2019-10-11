@@ -1,5 +1,6 @@
 apply plugin: 'groovy'
 apply plugin: 'com.novoda.bintray-release'
+apply plugin: 'maven'
 
 buildscript {
     repositories {
@@ -27,4 +28,13 @@ publish {
     publishVersion = '0.0.1'
     desc = 'A deploy script for projects built by gradle'
     website = 'https://github.com/chengww5217/gradle-deploy'
+}
+
+uploadArchives {
+    repositories.mavenDeployer {
+        repository(url: uri('./repo'))
+        pom.groupId = publish.groupId
+        pom.artifactId = publish.artifactId
+        pom.version = publish.publishVersion
+    }
 }
