@@ -1,5 +1,9 @@
 # gradle-deploy
 
+[![Download](https://api.bintray.com/packages/chengww5217/maven/gradle-deploy/images/download.svg)](https://bintray.com/chengww5217/maven/gradle-deploy)
+![GitHub issues](https://img.shields.io/github/issues/chengww5217/gradle-deploy?color=blue)
+[![License](http://img.shields.io/badge/license-apache%20v2-blue.svg)](https://github.com/chengww5217/gradle-deploy/blob/master/LICENSE)
+
 > gradle-deploy 是一个对以 gradle 构建的项目产物发布到对象存储或自定义服务器的一个 gradle 插件。
 
 例如对 Android 项目打包后的 `.apk` 文件进行发布更新。
@@ -31,7 +35,7 @@
 
 3. 在项目根目录新增 `local.properties` 文件，然后进行配置
 
-   具体参考 [Configuration 配置](##Configuration 配置) 一节。
+   具体参考[Configuration 配置](#Configuration 配置)一节。
 
 4. 等待 gradle 同步完成后，在项目根目录运行如下 gradle task 即可：
 
