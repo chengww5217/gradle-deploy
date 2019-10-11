@@ -18,8 +18,24 @@ class MyAwesomePlugin implements Plugin<Project> {
     @Override
     void apply(Project project) {
         project.task("gradle-deploy") {
+            // Init task configurations here
+            Properties properties = initProperties(project)
+            String depends_on_task = properties["depends_on_task"]
+            if (StringUtils.isNotEmpty(depends_on_task)) {
+                dependsOn(depends_on_task)
+            }
+
             doLast {
-                initProperties(project)
+                String[] deploy_type = (properties["deploy_type"] as String).split(",")
+                if (deploy_type == null || deploy_type.size() < 1) throw new GradleException("Please set 'deploy_type' in local.properties")
+                deploy_type.each { type ->
+                    switch (type.trim()) {
+                        case "qingstor":
+                            Uploader qingstor = QingstorUploaderFactory.instance.create(properties)
+                            deployFiles(properties, qingstor)
+                            break
+                    }
+                }
             }
         }
     }
@@ -27,25 +43,12 @@ class MyAwesomePlugin implements Plugin<Project> {
     /**
      * Init properties in <code>local.properties</code>.
      * @param project project
+     * @return Properties properties loaded in <code>local.properties</code>.
      */
-    private static void initProperties(Project project) {
+    private static Properties initProperties(Project project) {
         Properties properties = new Properties()
         properties.load(project.rootProject.file("local.properties").newDataInputStream())
-        String[] deploy_type = (properties["deploy_type"] as String).split(",")
-        if (deploy_type == null || deploy_type.size() < 1) throw new GradleException("Please set 'deploy_type' in local.properties")
-
-        String before_deploy_task = properties["before_deploy_task"]
-        if (StringUtils.isNotEmpty(before_deploy_task)) {
-            project.tasks.findByName(before_deploy_task)
-        }
-        deploy_type.each { type ->
-            switch (type.trim()) {
-                case "qingstor":
-                    Uploader qingstor = QingstorUploaderFactory.instance.create(properties)
-                    deployFiles(properties, qingstor)
-                    break
-            }
-        }
+        return properties
     }
 
     /**
