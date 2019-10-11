@@ -8,7 +8,7 @@
 
 ## Useage 使用
 
-1. 在项目**根目录的 build.gradle **文件中新增如下代码:
+1. 在项目 **根目录的 build.gradle** 文件中新增如下代码:
 
    ```groovy
    buildscript {
@@ -31,7 +31,7 @@
 
 3. 在项目根目录新增 `local.properties` 文件，然后进行配置
 
-   具体参考**Configuration 配置**一节。
+   具体参考 [Configuration 配置](##Configuration 配置) 一节。
 
 4. 等待 gradle 同步完成后，在项目根目录运行如下 gradle task 即可：
 
