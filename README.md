@@ -1,6 +1,6 @@
 # gradle-deploy
 
-[![Download](https://api.bintray.com/packages/chengww5217/maven/gradle-deploy/images/download.svg)](https://bintray.com/chengww5217/maven/gradle-deploy)
+[![Version](https://api.bintray.com/packages/chengww5217/maven/gradle-deploy/images/download.svg)](https://bintray.com/chengww5217/maven/gradle-deploy)
 [![GitHub issues](https://img.shields.io/github/issues/chengww5217/gradle-deploy)](https://github.com/chengww5217/gradle-deploy/issues)
 [![GitHub](https://img.shields.io/github/license/chengww5217/gradle-deploy?color=yellow)](https://github.com/chengww5217/gradle-deploy/blob/master/LICENSE)
 
