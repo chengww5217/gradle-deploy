@@ -43,7 +43,7 @@
    ./gradlew gradle-deploy
    ```
 
-##  Configuration 配置
+## Configuration 配置
 
 上传构建产物的配置文件位于项目根目录下的 `local.properties` 文件中。
 
@@ -84,13 +84,14 @@ qingstor.bucket=bucket-name
 
 一级参数是最外层的参数，基本是待发布文件相关的内容。
 
-| 参数名         | 参数说明                                                     | 是否必填 | 参考数据                      |
-| -------------- | ------------------------------------------------------------ | -------- | ----------------------------- |
-| deploy_type    | 发布类型，多个类型用逗号分隔                                 | 是       | qingstor,custom_server,aliyun |
-| file_path      | 待发布文件路径，如 `.apk` 文件                               | 是       |                               |
-| file_json_path | 待发布的检查更新文件路径，如 `.json` 文件                    | 否       |                               |
-| file_key       | 待发布文件的 key，支持 `${filename}` 作为文件名的通配符。如果是上传到对象存储可以在前面加上 `folder/${filename}` 指示其远程前缀路径 | 否       | android-release/${filename}   |
-| file_json_key  | 待发布的检查更新文件的 key，支持 `${filename}` 作为文件名的通配符。如果是上传到对象存储可以在前面加上 `folder/${filename}` 指示其远程前缀路径 | 否       | android-release/${filename}   |
+| 参数名          | 参数说明                                                     | 是否必填 | 参考数据                                                     |
+| --------------- | ------------------------------------------------------------ | -------- | ------------------------------------------------------------ |
+| deploy_type     | 发布类型，多个类型用逗号分隔                                 | 是       | qingstor,custom_server,aliyun                                |
+| file_path       | 待发布文件路径，如 `.apk` 文件                               | 是       |                                                              |
+| file_json_path  | 待发布的检查更新文件路径，如 `.json` 文件                    | 否       |                                                              |
+| file_key        | 待发布文件的 key，支持 `${filename}` 作为文件名的通配符。如果是上传到对象存储可以在前面加上 `folder/${filename}` 指示其远程前缀路径 | 否       | android-release/${filename}                                  |
+| file_json_key   | 待发布的检查更新文件的 key，支持 `${filename}` 作为文件名的通配符。如果是上传到对象存储可以在前面加上 `folder/${filename}` 指示其远程前缀路径 | 否       | android-release/${filename}                                  |
+| depends_on_task | 依赖的任务 task，可在发布前执行一些任务                      |          | 如在发布前执行编译 `_huawei` 渠道的 release 包，可选 `assemble_huaweiRelease` 任务 |
 
 ### 二级参数
 
@@ -112,4 +113,3 @@ qingstor.bucket=bucket-name
 3. 添加 `deploy_type=aliyun` 之后需要配置阿里云 OSS 的相关信息以进行上传。
 
    TBD
-
