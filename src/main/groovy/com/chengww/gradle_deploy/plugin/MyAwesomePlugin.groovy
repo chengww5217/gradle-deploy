@@ -1,6 +1,7 @@
 package com.chengww.gradle_deploy.plugin
 
 import com.chengww.gradle_deploy.uploader.Uploader
+import com.chengww.gradle_deploy.uploader.impl.AliyunUploaderFactory
 import com.chengww.gradle_deploy.uploader.impl.QingstorUploaderFactory
 import com.chengww.gradle_deploy.uploader.model.UploadResult
 import com.chengww.gradle_deploy.utils.StringUtils
@@ -29,11 +30,20 @@ class MyAwesomePlugin implements Plugin<Project> {
                 String[] deploy_type = (properties["deploy_type"] as String).split(",")
                 if (deploy_type == null || deploy_type.size() < 1) throw new GradleException("Please set 'deploy_type' in local.properties")
                 deploy_type.each { type ->
+                    Uploader uploader = null
                     switch (type.trim()) {
                         case "qingstor":
-                            Uploader qingstor = QingstorUploaderFactory.instance.create(properties)
-                            deployFiles(properties, qingstor)
+                            uploader = QingstorUploaderFactory.instance.create(properties)
                             break
+                        case "aliyun":
+                            uploader = AliyunUploaderFactory.instance.create(properties)
+                            break
+                        default:
+                            println("deploy_type: ${type} does not exit, please check...")
+                            break
+                    }
+                    if (uploader != null) {
+                        deployFiles(properties, uploader)
                     }
                 }
             }
