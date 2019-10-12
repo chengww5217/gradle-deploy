@@ -20,7 +20,7 @@
            jcenter()
        }
        dependencies {
-           classpath 'com.chengww:gradle-deploy:0.0.1'
+           classpath 'com.chengww:gradle-deploy:0.0.2'
        }
    }
    ```
@@ -112,4 +112,9 @@ qingstor.bucket=bucket-name
 
 3. 添加 `deploy_type=aliyun` 之后需要配置阿里云 OSS 的相关信息以进行上传。
 
-   TBD
+   | 参数名                     | 参数说明          | 是否必填 | 参考数据    |
+   | -------------------------- | ----------------- | -------- | ----------- |
+   | aliyun.access_key_id     | access_key_id     | 是       |             |
+   | aliyun.secret_access_key | secret_access_key | 是       |             |
+   | aliyun.endpoint          | endpoint         | 是       | oss-cn-beijing.aliyuncs.com       |
+   | aliyun.bucket            | bucket 名称       | 是       | bucket-name |
